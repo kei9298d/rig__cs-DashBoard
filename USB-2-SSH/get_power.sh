@@ -18,10 +18,11 @@ OUT=`expect -c "
 exit 0
 " \
  | tr -d '\0'`
-// for 'warning: command substitution: ignored null byte in input
+## for 'warning: command substitution: ignored null byte in input
 
-// Output
-// e.x.) '10.0'
+## Output
+# e.x.)
+# '10.0'
 
 echo ${OUT} \
 | sed -e 's/\r/\r\n/g' \
