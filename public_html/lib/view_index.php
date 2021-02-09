@@ -76,13 +76,14 @@ Name : Rig__cs（リグしぃ）<br />
 
 Specs: <br />
 <pre>
-CPU : Intel Core-i5 750 ( Disable TurboBoost )
-Memory : 8GB ( DDR3 2GB x4 )
+CPU : Intel Core-i5 750 (Disable TurboBoost)
+Memory : 8GB (DDR3 2GB x4)
 MotherBoard : MSI P55-SD50
 SSD : SATA SSD 120GB (HIDISC)
-GPU1 : nVidia GeForce GTX 1060 6GB (PALIT)
-GPU2 : nVidia GeForce GTX 1060 6GB (玄人志向)
-GPU2 : nVidia GeForce GTX 1060 6GB (ZOTAC)
+GPU1 : nVidia GeForce GTX 1060 6GB (PALIT GeForc® GTX 1060 Dual)
+GPU2 : nVidia GeForce GTX 1060 6GB (玄人志向 GF-GTX1060-6GB/OC/DF)
+GPU2 : nVidia GeForce GTX 1060 6GB (ZOTAC GeForce GTX 1060 AMP! Edition)
+Power : 800W 80PLUS PowerUnit (INFINITI)
 OS : Windows 10 Professional
 </pre>
 
