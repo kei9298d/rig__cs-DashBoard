@@ -3,14 +3,14 @@ function generate_sheet_PowerBill($cfg, $data) {
   // -------
   // Generate Table.
   // -------
-  // $data['watt'][0] - UNIX Time
-  // $data['watt'][1] - AMP
+  // $data['watt']['current'][0] - UNIX Time
+  // $data['watt']['current'][1] - AMP
 
   // Start-Stop Time.
   $data['sheet']['time']['start'] = ceil($cfg['time']['start'] / 300) * 300;
   $data['sheet']['time']['end'] = floor($cfg['time']['end'] / 300) * 300;
 
-  foreach($data['watt'] as $row) {
+  foreach($data['watt']['current'] as $row) {
     if( $tmp['ct'] == 0 ) { 
       $tmp['difftime'] = $row[0];
       $tmp['ct']++;

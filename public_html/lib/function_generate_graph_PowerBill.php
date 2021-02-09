@@ -9,7 +9,7 @@ function generate_graph_PowerBill($cfg, $data) {
   $tmp['ct'] = 0;
   $tmp['sum'] = 0;
 
-  foreach($data['watt'] as $row) {
+  foreach($data['watt']['current'] as $row) {
     if( $tmp['ct'] == 0 ) { 
       $tmp['difftime'] = $row[0];
       $tmp['ct']++;
