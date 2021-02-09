@@ -7,8 +7,8 @@ function generate_sheet_PowerBill($cfg, $data) {
   // $data['watt']['current'][1] - AMP
 
   // Start-Stop Time.
-  $data['sheet']['time']['start'] = ceil($cfg['time']['start'] / 300) * 300;
-  $data['sheet']['time']['end'] = floor($cfg['time']['end'] / 300) * 300;
+  $data['sheet']['time']['start'] = ceil($cfg['time']['current']['start'] / 300) * 300;
+  $data['sheet']['time']['end'] = floor($cfg['time']['current']['end'] / 300) * 300;
 
   foreach($data['watt']['current'] as $row) {
     if( $tmp['ct'] == 0 ) { 

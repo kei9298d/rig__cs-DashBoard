@@ -5,11 +5,12 @@ function generate_original_dataset($cfg) {
     // -------
 
     // Create Array
-    $data['watt'] = array();
+    $data['watt']['current'] = array();
+    $data['watt']['month']['this'] = array();
 
     // Get now unixtime
-    $cfg['time']['end'] = time();
-    $cfg['time']['start'] = $cfg['time']['end'] - ($cfg['hour'] * 60 * 60);
+    $cfg['time']['current']['end'] = time();
+    $cfg['time']['current']['start'] = $cfg['time']['end'] - ($cfg['hour'] * 60 * 60);
 
     // Load Data set
     $data['csv'] = file($cfg['file']['datafile']);

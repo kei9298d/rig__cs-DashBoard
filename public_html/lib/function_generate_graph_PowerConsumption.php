@@ -11,7 +11,7 @@ function generate_graph_PowerConsumption($cfg, $data) {
   $data_graph_ary = '';
 
   foreach($data['watt']['current'] as $row) {
-    $time = $row[0] - $cfg['time']['start'];
+    $time = $row[0] - $cfg['time']['current']['start'];
     $watt = $row[1] * $cfg['power']['volt'];
     $data_graph_ary .= sprintf("{ x:%s , y:%s },", $time, $watt);
   }
