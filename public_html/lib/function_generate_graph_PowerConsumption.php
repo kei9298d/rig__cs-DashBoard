@@ -10,9 +10,9 @@ function generate_graph_PowerConsumption($cfg, $data) {
   // x,y matrix table
   $data_graph_ary = '';
 
-  foreach($data['watt'] as $row) {
+  foreach($data['watt']['current'] as $row) {
     $time = $row[0] - $cfg['time']['start'];
-    $watt = $row[1] * $cfg['volt'];
+    $watt = $row[1] * $cfg['power']['volt'];
     $data_graph_ary .= sprintf("{ x:%s , y:%s },", $time, $watt);
   }
 
@@ -20,8 +20,7 @@ function generate_graph_PowerConsumption($cfg, $data) {
   $data_graph_ary = substr($data_graph_ary, 0, -1);
   $data_graph_ary .= "\n";
 
-
-  $json = file_get_contents($cfg['graph']['json_fn']);
+  $json = file_get_contents($cfg['graph']['PowerConsumption']['json']);
 
   $json = str_replace('__DATA__', $data_graph_ary, $json);
   $json = str_replace('__SCALES_X__', ($cfg['hour'] * 60 * 60), $json);

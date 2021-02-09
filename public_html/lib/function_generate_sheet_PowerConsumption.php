@@ -3,8 +3,8 @@ function generate_sheet_PowerConsumption($cfg, $data) {
   // -------
   // Generate Table.
   // -------
-  // $data['watt'][0] - UNIX Time
-  // $data['watt'][1] - AMP
+  // $data['watt']['current'][0] - UNIX Time
+  // $data['watt']['current'][1] - AMP
 
   // Start-Stop Time.
   $data['sheet']['time']['start'] = ceil($cfg['time']['start'] / 300) * 300;
@@ -16,10 +16,10 @@ function generate_sheet_PowerConsumption($cfg, $data) {
   $tmp['max'] = 0;
   $tmp['min'] = 9999;
 
-  foreach( $data['watt'] as $row) {
+  foreach( $data['watt']['current'] as $row) {
     if( $row[0] >= $data['sheet']['time']['start'] && $row[0] <= $data['sheet']['time']['end']) {
       $tmp['ct']++;
-      $watt = $row[1] * $cfg['volt'];
+      $watt = $row[1] * $cfg['power']['volt'];
       $tmp['sum'] += $watt;
       if ($tmp['max'] < $watt) $tmp['max'] = $watt;
       if ($tmp['min'] > $watt) $tmp['min'] = $watt;
@@ -28,7 +28,7 @@ function generate_sheet_PowerConsumption($cfg, $data) {
 
     // Get Last update time.
     $data['sheet']['lastupdate'] = $row[0];
-    $data['sheet']['current']    = $row[1] * $cfg['volt'];
+    $data['sheet']['current']    = $row[1] * $cfg['power']['volt'];
     unset($row);
 
   }

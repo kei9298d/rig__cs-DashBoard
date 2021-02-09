@@ -21,7 +21,7 @@ function generate_original_dataset($cfg) {
 
         // Filter
         if( $row_array != '' && $row_array[0] >= $cfg['time']['start'] && $row_array[0] <= $cfg['time']['end'] ) {
-            $data['watt'][] = $row_array;
+            $data['watt']['current'][] = $row_array;
         }
     }
     unset($row_array);
