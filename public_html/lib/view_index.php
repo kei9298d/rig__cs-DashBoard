@@ -73,14 +73,16 @@ Name : Rig__cs（リグしぃ）<br />
 <img src="./img/Rig__cs.jpg"><br />
 </p>
 <p>
+
 Specs: <br />
 <pre>
-CPU : Intel Core-i5 750 (no TurboBoost)
-Memory : DDR3 2GB x2 (DualChannel)
+CPU : Intel Core-i5 750 ( Disable TurboBoost )
+Memory : 8GB ( DDR3 2GB x4 )
 MotherBoard : MSI P55-SD50
-SSD : HIDISC SSD 120GB
-GPU1 : nVidia GeForce GTX 1060 6GB
-GPU2 : nVidia GeForce GTX 1060 6GB
+SSD : SATA SSD 120GB (HIDISC)
+GPU1 : nVidia GeForce GTX 1060 6GB (PALIT)
+GPU2 : nVidia GeForce GTX 1060 6GB (玄人志向)
+GPU2 : nVidia GeForce GTX 1060 6GB (ZOTAC)
 OS : Windows 10 Professional
 </pre>
 
