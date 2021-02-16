@@ -5,11 +5,8 @@ function generate_graph_PowerConsumption($cfg, $data) {
 // Generate Graph.
 // -------
 
-  $data_graph = '';
-
-  // x,y matrix table
+  // Init
   $data_graph_ary = '';
-
   $ftime = 0;
   foreach($data as $key => $val) {
     // X軸
@@ -24,9 +21,7 @@ function generate_graph_PowerConsumption($cfg, $data) {
   }
 
   // Erase last ',' and formatting
-  $data_graph_ary = substr($data_graph_ary, 0, -1);
-  $data_graph_ary .= "\n";
-
+  $data_graph_ary = substr($data_graph_ary, 0, -1)."\n";
   $json = file_get_contents($cfg['graph']['PowerConsumption']['json']);
 
   $json = str_replace('__DATA__', $data_graph_ary, $json);

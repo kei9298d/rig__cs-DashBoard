@@ -6,7 +6,7 @@ $cfg['file']['datafile']
 $cfg['graph']['qc']['width']
         = 800;
 $cfg['graph']['qc']['height']
-    = 480;
+         = 480;
 
 $cfg['view']['index']
         = './lib/view_index.php';

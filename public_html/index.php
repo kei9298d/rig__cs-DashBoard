@@ -11,13 +11,6 @@ require_once('./lib/config.php');
 // for Dev.
 if($FLG_debug) $cfg['file']['datafile'] = './testdata/wattlog.csv';
 
-// Input hour from GET
-if(isset($_GET['h']) && $_GET['h'] <= 6 && $_GET['h'] >= 1) $cfg['hour'] = (int)floor($_GET['h']);
-
-// Configure graph X scale
-//$cfg['graph']['x_scales']  = $cfg['hour'] * 60 * 60;
-$cfg['graph']['x_scales']  = 1 * 60 * 60;
-
 // Load lib - QuickChart.
 require_once ('./lib/QuickChart.php');
 
@@ -38,7 +31,7 @@ require_once ('./lib/function_generate_graph_PowerConsumption.php');
 require_once ('./lib/function_generate_sheet_PowerConsumption.php');
 
 // 電気代 - グラフ
-//require_once ('./lib/function_generate_graph_PowerBill.php');
+require_once ('./lib/function_generate_graph_PowerBill.php');
 // 電気代 - サマリ
 require_once ('./lib/function_generate_sheet_PowerBill.php');
 
@@ -50,15 +43,16 @@ $output['bill']['hour'] = calc_bill_hour($cfg, $data['currenet_hour']);
 $output['bill']['month'] = calc_bill_month($cfg, $data['currenet_month']);
 
 // *** Currenet Hour
-// Generate Graph URL.
-$output['graph']['PowerConsumption']['url'] = generate_graph_PowerConsumption($cfg, $data['currenet_hour']);
 // Generate Sheet Data.
 $output['sheet']['PowerConsumption'] = generate_sheet_PowerConsumption($cfg, $data['currenet_hour']);
-
 // Generate Graph URL.
-//$output['graph']['PowerBill']['url'] = generate_graph_PowerBill($cfg, $data['currenet_month']);
+$output['graph']['PowerConsumption']['url'] = generate_graph_PowerConsumption($cfg, $data['currenet_hour']);
+
+// *** Current Month
 // Generate Sheet Data.
 $output['sheet']['PowerBill'] = generate_sheet_PowerBill($cfg, $output['bill']);
+// Generate Graph URL.
+$output['graph']['PowerBill']['url'] = generate_graph_PowerBill($cfg, $data['currenet_month'], $output['sheet']['PowerBill']['current']);
 
 // Output.
 require_once('./lib/view_index.php');

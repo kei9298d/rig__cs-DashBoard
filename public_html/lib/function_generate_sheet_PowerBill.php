@@ -19,6 +19,7 @@ function generate_sheet_PowerBill($cfg, $data) {
   $output['name']   = $powercompany['name'];
   $output['url']    = $powercompany['url'];
   $output['price']  = $powercompany['price'];
+  unset($powercompany);
   
   return($output);
 }
