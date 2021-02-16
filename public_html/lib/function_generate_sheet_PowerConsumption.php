@@ -3,12 +3,8 @@ function generate_sheet_PowerConsumption($cfg, $data) {
   // -------
   // Generate Table.
   // -------
-  // $data['watt']['current'][0] - UNIX Time
-  // $data['watt']['current'][1] - AMP
-
-  // Start-Stop Time.
-  $data['sheet']['time']['start'] = ceil($cfg['time']['current']['start'] / 300) * 300;
-  $data['sheet']['time']['end'] = floor($cfg['time']['current']['end'] / 300) * 300;
+  // $data['hour'] - 直近1時間の電気代 
+  // $data['month'] - 今月の消費した電気代
 
   // Create AVG/MAX/MIN
   $tmp['ct'] = 0;
@@ -16,10 +12,10 @@ function generate_sheet_PowerConsumption($cfg, $data) {
   $tmp['max'] = 0;
   $tmp['min'] = 9999;
 
-  foreach( $data['watt']['current'] as $row) {
-    if( $row[0] >= $data['sheet']['time']['start'] && $row[0] <= $data['sheet']['time']['end']) {
+  foreach( $data as $key => $val) {
+    if( $key >= $start && $key <= $end ) {
       $tmp['ct']++;
-      $watt = $row[1] * $cfg['power']['volt'];
+      $watt = $val * $cfg['power']['volt'];
       $tmp['sum'] += $watt;
       if ($tmp['max'] < $watt) $tmp['max'] = $watt;
       if ($tmp['min'] > $watt) $tmp['min'] = $watt;
@@ -27,17 +23,17 @@ function generate_sheet_PowerConsumption($cfg, $data) {
     }
 
     // Get Last update time.
-    $data['sheet']['lastupdate'] = $row[0];
-    $data['sheet']['current']    = $row[1] * $cfg['power']['volt'];
+    $data['lastupdate'] = $key;
+    $data['current']    = $val * $cfg['power']['volt'];
     unset($row);
 
   }
 
-  $data['sheet']['avg'] = round($tmp['sum'] / $tmp['ct']);
-  $data['sheet']['max'] = $tmp['max'];
-  $data['sheet']['min'] = $tmp['min'];
-  $data['sheet']['ct']  = $tmp['ct'];
+  $data['avg'] = round($tmp['sum'] / $tmp['ct']);
+  $data['max'] = $tmp['max'];
+  $data['min'] = $tmp['min'];
+  $data['ct']  = $tmp['ct'];
   unset($tmp);
 
-  return($data['sheet']);
+  return($data);
 }

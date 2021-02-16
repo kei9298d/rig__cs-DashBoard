@@ -10,9 +10,9 @@ function generate_graph_PowerConsumption($cfg, $data) {
   // x,y matrix table
   $data_graph_ary = '';
 
-  foreach($data['watt']['current'] as $row) {
-    $time = $row[0] - $cfg['time']['current']['start'];
-    $watt = $row[1] * $cfg['power']['volt'];
+  foreach($data as $key => $val) {
+    $time = $key - time();
+    $watt = $val * $cfg['power']['volt'];
     $data_graph_ary .= sprintf("{ x:%s , y:%s },", $time, $watt);
   }
 
