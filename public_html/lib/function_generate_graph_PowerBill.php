@@ -6,15 +6,27 @@
     $bill = 0;
     $data_graph_ary = '';
   
+    // 月初 00:00:00
+    $tmp['start'] = strtotime('first day of this month');
+    $tmp['start'] = floor($tmp['start'] / 86400) * 86400;  // 日付を丸める
+
+    // 月末 23:59:59
+    $tmp['end']  = strtotime('last day of this month');
+    $tmp['end'] = floor($tmp['end'] / 86400) * 86400; // 日付を丸める
+    $tmp['end'] = $tmp['end'] + (((( 23 * 60 ) + 59 ) * 60 ) + 59); // 23:59:59
+
     $avg['flag'] = false;
+    $avg['ct']=0;
+    $avg['day_ct']=0;
     // データを丸める
     foreach($data as $key => $val) {
       if ( $avg['flag'] === false) {
         $avg['flag'] = true;
-        $avg['start'] = $key;
-        $avg['end'] = $avg['start'] + ( 4 * 60 * 60 ); // 60min
+        $avg['start'] = $tmp['start'] + ($avg['day_ct'] * 24 * 60 * 60);
+        $avg['end'] = $avg['start'] + ( 24 * 60 * 60 );
         $avg['ct'] = 0;
         $avg['sum'] = 0;
+
 
       } else if( $avg['flag'] === true && $key >= $avg['start'] && $key <= $avg['end']) {
         // データため込む
@@ -24,7 +36,8 @@
       } else {
         // 配列に吐き出す
         $avg['flag'] = false;
-        $avg['output'][$avg['start']] = ( $avg['sum'] / $avg['ct'] );
+        $avg['output'][$avg['day_ct']] = ( $avg['sum'] / $avg['ct'] );
+        $avg['day_ct']++;
       }
     }
 
@@ -34,21 +47,10 @@
     $tmp['FLG'] = false;
     $data_graph_ary = '';
 
-    // 月初 00:00:00
-    $tmp['start'] = strtotime('first day of this month');
-    $tmp['start'] = round($tmp['start'] / 86400) * 86400;  // 日付を丸める
-    // 月末 23:59:59
-    $tmp['end']  = strtotime('last day of this month');
-    $tmp['end'] = round($tmp['end'] / 86400) * 86400; // 日付を丸める
-    $tmp['end'] = $tmp['end'] + (((( 23 * 60 ) + 59 ) * 60 ) + 59); // 23:59:59
-
     foreach($avg['output'] as $key => $val) {
       // X軸
-      if ( $tmp['lastsec'] == 0 ) $tmp['lastsec'] = $key;
-
-      $tmp['calcsec'] = $key - $tmp['lastsec'];
-      $tmp['sec'] = $key - $tmp['start'];
-      $tmp['lastsec'] = $key;
+      $tmp['calcsec'] = 24 * 60 * 60;
+      $tmp['day'] =  $key + 1;
 
       // Y軸
       $tmp['price'] = select_power($cfg, $key)['price']; // Yen-Kwn
@@ -57,9 +59,8 @@
       $tmp['sum'] += $tmp['bill'];
 
       // JSON生成
-      $data_graph_ary .= sprintf("{ x:%s , y:%s },", $tmp['sec'], $tmp['sum']);
+      $data_graph_ary .= sprintf("{ x:%s , y:%s },", $tmp['day'], $tmp['sum']);
     }
-
 
   // Erase last ',' and formatting
   $data_graph_ary = substr($data_graph_ary, 0, -1)."\n";
@@ -68,7 +69,7 @@
   $json = file_get_contents($cfg['graph']['PowerBill']['json']);
 
   $json = str_replace('__DATA__', $data_graph_ary, $json);
-  $json = str_replace('__SCALES_X__', $tmp['end'] - $tmp['start'], $json);
+  $json = str_replace('__SCALES_X__', date('t'), $json);
   $json = str_replace('__SCALES_Y__', (int)$max, $json);
 
   // Init QuickChart

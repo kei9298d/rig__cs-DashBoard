@@ -52,7 +52,7 @@ $output['graph']['PowerConsumption']['url'] = generate_graph_PowerConsumption($c
 // Generate Sheet Data.
 $output['sheet']['PowerBill'] = generate_sheet_PowerBill($cfg, $output['bill']);
 // Generate Graph URL.
-$output['graph']['PowerBill']['url'] = generate_graph_PowerBill($cfg, $data['currenet_month'], $output['sheet']['PowerBill']['current']);
+$output['graph']['PowerBill']['url'] = generate_graph_PowerBill($cfg, $data['currenet_month'], $output['sheet']['PowerBill']['month']);
 
 // Output.
 require_once('./lib/view_index.php');
