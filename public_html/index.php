@@ -17,7 +17,7 @@ if(isset($_GET['h']) && $_GET['h'] <= 6 && $_GET['h'] >= 1) $cfg['hour'] = (int)
 // Load lib - QuickChart.
 require_once ('./lib/QuickChart.php');
 
-// Load Lib - DataPack
+// Load lib - DataPack
 require_once ('./lib/class_datapack.php');
 $DP = new DataPack();
 $DP->init($cfg['file']['datafile']);
