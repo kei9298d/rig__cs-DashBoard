@@ -18,30 +18,27 @@
 <a name="PowerConsumption">
 <h2>Power Consumption</h2>
 <p>
-CURRENT: <? echo($data['sheet']['current']['PowerConsumption']['current']); ?>W<br />
-AVERAGE: <? echo($data['sheet']['current']['PowerConsumption']['avg']); ?>W<br />
-MAX: <? echo($data['sheet']['current']['PowerConsumption']['max']); ?>W<br />
-MIN: <? echo($data['sheet']['current']['PowerConsumption']['min']); ?>W<br />
+CURRENT: <? echo($output['sheet']['PowerConsumption']['current']); ?>W / 1Hour<br />
+<br />
+AVERAGE: <? echo($output['sheet']['PowerConsumption']['avg']); ?>W<br />
+MAX: <? echo($output['sheet']['PowerConsumption']['max']); ?>W<br />
+MIN: <? echo($output['sheet']['PowerConsumption']['min']); ?>W<br />
 Power Source: AC <? echo($cfg['power']['volt']); ?>V<br />
 </p>
 
 <p>
- <img src="<? echo($data['graph']['PowerConsumption']['url']);?>"><br />
-View : <a href="./?h=1#PowerConsumption">1H</a> / 
-<a href="./?h=3#PowerConsumption">3H</a> / 
-<a href="./?h=6#PowerConsumption">6H</a><br />
+ <img src="<? echo($output['graph']['PowerConsumption']['url']);?>"><br />
 </p>
 
 <hr>
 <a name="PowerBilling">
 <h2>Power Billing</h2>
 <p>
-CURRENT: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['current'])); ?> JPY / <?php echo($cfg['hour']);?> Hours<br />
-1Hour: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['1h'])); ?> JPY<br />
-1Day: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['1d'])); ?> JPY<br />
-1Week: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['7d'])); ?> JPY<br />
-1Month(28Days): <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['28d'])); ?> JPY<br />
-1Month(30Days): <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['30d'])); ?> JPY<br />
+CURRENT: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['current'])); ?> JPY / <?php echo($cfg['hour']);?> Hours<br />
+1Hour: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1h'])); ?> JPY<br />
+1Day: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1d'])); ?> JPY<br />
+1Week: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['7d'])); ?> JPY<br />
+1Month(<?php echo($output['sheet']['PowerBill']['MonthDays']); ?>): <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['Month'])); ?> JPY<br />
 <br />
 Power Plan: 
 <a href="<? echo($data['sheet']['current']['PowerBill']['url']); ?>" target="_blank">
@@ -51,10 +48,7 @@ Price: <? echo($data['sheet']['current']['PowerBill']['price']); ?> JPY / KWh<br
 </p>
 
 <p>
- <img src="<? echo($data['graph']['PowerBill']['url']);?>"><br />
-View : <a href="./?h=1#PowerBilling">1H</a> / 
-<a href="./?h=3#PowerBilling">3H</a> / 
-<a href="./?h=6#PowerBilling">6H</a><br />
+ <img src="<? echo($output['graph']['PowerBill']['url']);?>"><br />
 </p>
 
 <hr>

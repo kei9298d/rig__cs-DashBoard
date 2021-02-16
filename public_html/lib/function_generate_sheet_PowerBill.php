@@ -7,7 +7,7 @@ function generate_sheet_PowerBill($cfg, $data) {
   // $data['month'] - 今月の消費した電気代
   
   $data['1h']       = $data['hour'];
-  $data['1d']      = $data['hour'] * 24;
+  $data['1d']       = $data['hour'] * 24;
   $data['7d']       = $data['hour'] * 24 * 7;
   $data['Month']    = $data['hour'] * 24 * date('t');
   $data['MonthDays']= date('t');
