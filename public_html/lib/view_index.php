@@ -57,8 +57,8 @@ Price: <? echo($output['sheet']['PowerBill']['price']); ?> JPY / KWh<br />
 <a name="DataSource">
 <h2>DataSource</h2>
 <p>
-Last Update: <? echo(date(DATE_ATOM, $data['sheet']['current']['PowerConsumption']['lastupdate'])); ?><br />
-Data Count: <? echo($data['sheet']['current']['PowerConsumption']['ct']);?> / <? echo($cfg['hour']); ?> Hours<br />
+Last Update: <? echo(date(DATE_ATOM, $output['sheet']['PowerConsumption']['lastupdate'])); ?><br />
+Data Count: <? echo($output['sheet']['PowerConsumption']['ct']);?> / <? echo($cfg['hour']); ?> Hours<br />
 </p>
 
 <hr>
