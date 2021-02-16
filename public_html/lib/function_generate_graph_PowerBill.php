@@ -5,10 +5,8 @@
   function generate_graph_PowerBill($cfg, $data) {
 
 
-    //$data['bill'] = array();
     $tmp['ct'] = 0;
     $tmp['sum'] = 0;
-
 
     foreach($data as $key => $val) {
       if( $ct == 0 ) { 
