@@ -18,10 +18,10 @@
 <a name="PowerConsumption">
 <h2>Power Consumption</h2>
 <p>
-CURRENT: <? echo($data['sheet']['PowerConsumption']['current']); ?>W<br />
-AVERAGE: <? echo($data['sheet']['PowerConsumption']['avg']); ?>W<br />
-MAX: <? echo($data['sheet']['PowerConsumption']['max']); ?>W<br />
-MIN: <? echo($data['sheet']['PowerConsumption']['min']); ?>W<br />
+CURRENT: <? echo($data['sheet']['current']['PowerConsumption']['current']); ?>W<br />
+AVERAGE: <? echo($data['sheet']['current']['PowerConsumption']['avg']); ?>W<br />
+MAX: <? echo($data['sheet']['current']['PowerConsumption']['max']); ?>W<br />
+MIN: <? echo($data['sheet']['current']['PowerConsumption']['min']); ?>W<br />
 Power Source: AC <? echo($cfg['power']['volt']); ?>V<br />
 </p>
 
@@ -36,18 +36,18 @@ View : <a href="./?h=1#PowerConsumption">1H</a> /
 <a name="PowerBilling">
 <h2>Power Billing</h2>
 <p>
-CURRENT: <? echo(sprintf('%.2f',$data['sheet']['PowerBill']['current'])); ?> JPY / <?php echo($cfg['hour']);?> Hours<br />
-1Hour: <? echo(sprintf('%.2f',$data['sheet']['PowerBill']['1h'])); ?> JPY<br />
-1Day: <? echo(sprintf('%.2f',$data['sheet']['PowerBill']['1d'])); ?> JPY<br />
-1Week: <? echo(sprintf('%.2f',$data['sheet']['PowerBill']['7d'])); ?> JPY<br />
-1Month(28Days): <? echo(sprintf('%.2f',$data['sheet']['PowerBill']['28d'])); ?> JPY<br />
-1Month(30Days): <? echo(sprintf('%.2f',$data['sheet']['PowerBill']['30d'])); ?> JPY<br />
+CURRENT: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['current'])); ?> JPY / <?php echo($cfg['hour']);?> Hours<br />
+1Hour: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['1h'])); ?> JPY<br />
+1Day: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['1d'])); ?> JPY<br />
+1Week: <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['7d'])); ?> JPY<br />
+1Month(28Days): <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['28d'])); ?> JPY<br />
+1Month(30Days): <? echo(sprintf('%.2f',$data['sheet']['current']['PowerBill']['30d'])); ?> JPY<br />
 <br />
 Power Plan: 
-<a href="<? echo($data['sheet']['PowerBill']['url']); ?>" target="_blank">
-<? echo($data['sheet']['PowerBill']['name']); ?><br />
+<a href="<? echo($data['sheet']['current']['PowerBill']['url']); ?>" target="_blank">
+<? echo($data['sheet']['current']['PowerBill']['name']); ?><br />
 </a>
-Price: <? echo($data['sheet']['PowerBill']['price']); ?> JPY / KWh<br />
+Price: <? echo($data['sheet']['current']['PowerBill']['price']); ?> JPY / KWh<br />
 </p>
 
 <p>
@@ -61,8 +61,8 @@ View : <a href="./?h=1#PowerBilling">1H</a> /
 <a name="DataSource">
 <h2>DataSource</h2>
 <p>
-Last Update: <? echo(date(DATE_ATOM, $data['sheet']['PowerConsumption']['lastupdate'])); ?><br />
-Data Count: <? echo($data['sheet']['PowerConsumption']['ct']);?> / <? echo($cfg['hour']); ?> Hours<br />
+Last Update: <? echo(date(DATE_ATOM, $data['sheet']['current']['PowerConsumption']['lastupdate'])); ?><br />
+Data Count: <? echo($data['sheet']['current']['PowerConsumption']['ct']);?> / <? echo($cfg['hour']); ?> Hours<br />
 </p>
 
 <hr>

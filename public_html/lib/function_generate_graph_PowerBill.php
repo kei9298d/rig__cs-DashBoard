@@ -34,7 +34,7 @@ function generate_graph_PowerBill($cfg, $data) {
   $data_graph_ary = '';
 
   foreach($data['bill'] as $row) {
-    $time = $row[0] - $cfg['time']['start'];
+    $time = $row[0] - $cfg['time']['current']['start'];
     $bill = $bill + $row[1];
     $data_graph_ary .= sprintf("{ x:%s , y:%s },", $time, $bill);
   }
