@@ -2,3 +2,4 @@ WattLogger/transfer.sh
 .vscode/launch.json
 .vscode/settings.json
 public_html/testdata/wattlog.csv
+.vscode/extensions.json

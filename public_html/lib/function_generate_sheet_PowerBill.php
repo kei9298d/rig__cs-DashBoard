@@ -6,15 +6,20 @@ function generate_sheet_PowerBill($cfg, $data) {
   // $data['hour'] - 直近1時間の電気代 
   // $data['month'] - 今月の消費した電気代
   
-  $data['1h']       = $data['hour'];
-  $data['1d']      = $data['hour'] * 24;
-  $data['7d']       = $data['hour'] * 24 * 7;
-  $data['Month']    = $data['hour'] * 24 * date('t');
-  $data['MonthDays']= date('t');
+  $output['1h']       = $data['hour'];
+  $output['1d']       = $data['hour'] * 24;
+  $output['7d']       = $data['hour'] * 24 * 7;
+
+  $output['month']    = $data['month'] / date('d') * date('t');
+  $output['monthdays']= date('t');
+
+  $output['current']  = $data['month'];
+
+  $powercompany = select_power($cfg, time());
+  $output['name']   = $powercompany['name'];
+  $output['url']    = $powercompany['url'];
+  $output['price']  = $powercompany['price'];
+  unset($powercompany);
   
-  $data['name'] = select_power($cfg, time())['name'];
-  $data['url'] = select_power($cfg, time())['url'];
-  $data['price'] = select_power($cfg, time())['price'];
-  
-  return($data);
+  return($output);
 }
