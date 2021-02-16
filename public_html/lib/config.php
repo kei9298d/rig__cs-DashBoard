@@ -1,6 +1,6 @@
 <?
 $cfg['hour']
-        = 3;
+        = 1;
 $cfg['file']['datafile']
         = '/virtual/kei9298d/data_watt/wattlog.csv';
 $cfg['graph']['qc']['width']
@@ -27,16 +27,15 @@ $cfg['power'][0]['url']
 $cfg['power'][0]['start']
         = 0;
 
-/**
- * $cfg['power'][start_unixtime]['price']
- *         = 26.40; // KWh/yen
- * $cfg['power'][start_unixtime]['name']
- *      = 'EverGreen ニフティ会員特別プラン 関東エリア B';
- * $cfg['power'][start_unixtime]['url']
- *      = 'https://csoption.nifty.com/denki/price/';
- * $cfg['power'][start_unixtime]['start']
- *      = 0;
- * **/
+// 2021.03.24- 
+$cfg['power'][1]['price']
+        = 26.40; // KWh/yen
+$cfg['power'][1]['name']
+= 'EverGreen ニフティ会員特別プラン 関東エリア B';
+$cfg['power'][1]['url']
+= 'https://csoption.nifty.com/denki/price/';
+$cfg['power'][1]['start']
+= 1614092400;
 
 
 // Shardfunction - Select Power company

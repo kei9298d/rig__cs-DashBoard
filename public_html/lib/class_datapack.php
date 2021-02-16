@@ -49,7 +49,7 @@ class DataPack {
         // outputの配列の生成
         $out = array();
         foreach ($this->db as $key => $val) {
-            if ( $key >= $start && $key <= $end) {
+            if ( $key >= $start && $key <= $end && $val != '') {
                 // 連想配列として記録
                 $out[$key] = $val;
             }
