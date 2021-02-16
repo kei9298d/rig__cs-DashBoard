@@ -33,7 +33,7 @@ require_once ('./lib/function_generate_data_current_month.php');
 require_once ('./lib/function_calc_bill_hour.php');
 require_once ('./lib/function_calc_bill_month.php');
 
-require_once ('./lib/function_generate_graph_PowerConsumption.php');
+//require_once ('./lib/function_generate_graph_PowerConsumption.php');
 require_once ('./lib/function_generate_sheet_PowerConsumption.php');
 
 //require_once ('./lib/function_generate_graph_PowerBill.php');
@@ -48,9 +48,9 @@ $output['bill']['month'] = calc_bill_month($cfg, $data['currenet_month']);
 
 // *** Currenet Hour
 // Generate Graph URL.
-$output['graph']['PowerConsumption']['url'] = generate_graph_PowerConsumption($cfg, $data['currenet_hour']);
+//$output['graph']['PowerConsumption']['url'] = generate_graph_PowerConsumption($cfg, $data['currenet_hour']);
 // Generate Sheet Data.
-$output['sheet']['PowerConsumption'] = generate_sheet_PowerConsumption($cfg, $data['currenet_month']);
+//$output['sheet']['PowerConsumption'] = generate_sheet_PowerConsumption($cfg, $data['currenet_month']);
 
 // Generate Graph URL.
 //$output['graph']['PowerBill']['url'] = generate_graph_PowerBill($cfg, $data['currenet_month']);

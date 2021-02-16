@@ -23,17 +23,17 @@ function generate_sheet_PowerConsumption($cfg, $data) {
     }
 
     // Get Last update time.
-    $data['lastupdate'] = $key;
-    $data['current']    = $val * $cfg['power']['volt'];
+    $out['lastupdate'] = $key;
+    $out['current']    = $val * $cfg['power']['volt'];
     unset($row);
 
   }
 
-  $data['avg'] = round($tmp['sum'] / $tmp['ct']);
-  $data['max'] = $tmp['max'];
-  $data['min'] = $tmp['min'];
-  $data['ct']  = $tmp['ct'];
+  $out['avg'] = round($tmp['sum'] / $tmp['ct']);
+  $out['max'] = $tmp['max'];
+  $out['min'] = $tmp['min'];
+  $out['ct']  = $tmp['ct'];
   unset($tmp);
 
-  return($data);
+  return($out);
 }

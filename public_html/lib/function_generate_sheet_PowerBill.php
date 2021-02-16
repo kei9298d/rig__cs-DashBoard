@@ -9,14 +9,16 @@ function generate_sheet_PowerBill($cfg, $data) {
   $output['1h']       = $data['hour'];
   $output['1d']       = $data['hour'] * 24;
   $output['7d']       = $data['hour'] * 24 * 7;
-  $output['month']    = $data['hour'] * 24 * date('t');
+
+  $output['month']    = $data['month'] / date('d') * date('t');
   $output['monthdays']= date('t');
 
   $output['current']  = $data['month'];
 
-  $output['name'] = select_power($cfg, time())['name'];
-  $output['url'] = select_power($cfg, time())['url'];
-  $output['price'] = select_power($cfg, time())['price'];
+  $powercompany = select_power($cfg, time());
+  $output['name']   = $powercompany['name'];
+  $output['url']    = $powercompany['url'];
+  $output['price']  = $powercompany['price'];
   
   return($output);
 }

@@ -35,18 +35,18 @@ Power Source: AC <? echo($cfg['power']['volt']); ?>V<br />
 <h2>Power Billing</h2>
 <p>
 現在の電気代: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['current'])); ?> JPY<br />
-電気代（予測）:(<?php echo($output['sheet']['PowerBill']['monthdays']); ?>Days): <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['month'])); ?> JPY<br />
 <br />
 【予測値】
-1Hour: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1h'])); ?> JPY<br />
-1Day: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1d'])); ?> JPY<br />
+1Month:(<?php echo($output['sheet']['PowerBill']['monthdays']); ?>Days): <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['month'])); ?> JPY<br />
 1Week: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['7d'])); ?> JPY<br />
+1Day: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1d'])); ?> JPY<br />
+1Hour: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1h'])); ?> JPY<br />
 <br />
-【電気プラン】
-<a href="<? echo($data['sheet']['current']['PowerBill']['url']); ?>" target="_blank">
-<? echo($data['sheet']['current']['PowerBill']['name']); ?><br />
+【現在の電気プラン】
+<a href="<? echo($output['sheet']['PowerBill']['url']); ?>" target="_blank">
+<? echo($output['sheet']['PowerBill']['name']); ?><br />
 </a>
-Price: <? echo($data['sheet']['current']['PowerBill']['price']); ?> JPY / KWh<br />
+Price: <? echo($output['sheet']['PowerBill']['price']); ?> JPY / KWh<br />
 </p>
 
 <p>
