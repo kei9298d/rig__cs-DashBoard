@@ -18,7 +18,7 @@
 <a name="PowerConsumption">
 <h2>Power Consumption</h2>
 <p>
-CURRENT: <? echo($output['sheet']['PowerConsumption']['current']); ?>W / 1Hour<br />
+CURRENT: <? echo($output['sheet']['PowerConsumption']['current']); ?>W<br />
 <br />
 AVERAGE: <? echo($output['sheet']['PowerConsumption']['avg']); ?>W<br />
 MAX: <? echo($output['sheet']['PowerConsumption']['max']); ?>W<br />
@@ -34,13 +34,15 @@ Power Source: AC <? echo($cfg['power']['volt']); ?>V<br />
 <a name="PowerBilling">
 <h2>Power Billing</h2>
 <p>
-CURRENT: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['current'])); ?> JPY / <?php echo($cfg['hour']);?> Hours<br />
+現在の電気代: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['current'])); ?> JPY<br />
+電気代（予測）:(<?php echo($output['sheet']['PowerBill']['monthdays']); ?>Days): <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['month'])); ?> JPY<br />
+<br />
+【予測値】
 1Hour: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1h'])); ?> JPY<br />
 1Day: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['1d'])); ?> JPY<br />
 1Week: <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['7d'])); ?> JPY<br />
-1Month(<?php echo($output['sheet']['PowerBill']['MonthDays']); ?>): <? echo(sprintf('%.2f',$output['sheet']['PowerBill']['Month'])); ?> JPY<br />
 <br />
-Power Plan: 
+【電気プラン】
 <a href="<? echo($data['sheet']['current']['PowerBill']['url']); ?>" target="_blank">
 <? echo($data['sheet']['current']['PowerBill']['name']); ?><br />
 </a>
